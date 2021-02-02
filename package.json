@@ -1,0 +1,24 @@
+{
+  "name": "nossaDataTest",
+  "version": "1.0.0",
+  "description": "Nossa Data Coding Test 1",
+  "main": "nossaDataSolutions.js",
+  "scripts": {
+    "test": "mocha nossaDataTests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tombenbow/nossaDataTest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tombenbow/nossaDataTest/issues"
+  },
+  "homepage": "https://github.com/tombenbow/nossaDataTest#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1"
+  }
+}
