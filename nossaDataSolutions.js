@@ -1,34 +1,56 @@
-// Find the Duplicate 
-// I assumed here there always would be a duplicate
+//Please find below the solutions. I have assumed the user would always follow the happy path + enter the correct data types.
 
-const findTheDuplicate = (arr) => {
-    const obj = {}
-    for (i = 0; i < arr.length; i++) {
-        if (obj.hasOwnProperty(arr[i])) {
-            return arr[i]
+//Problem 1: Find the Duplicate
+//Space complexity: O(n) Time Complexity: O(n)
+//Parameters: arrayOfIntegers (an array of integers)
+// I assumed here there always would be a duplicate in the input array
+const findTheDuplicateNumber = (arrayOfIntegers) => {
+    const objectOfUniqueKeys = {}
+    for (i = 0; i < arrayOfIntegers.length; i++) {
+        if (objectOfUniqueKeys.hasOwnProperty(arrayOfIntegers[i])) {
+            return arrayOfIntegers[i]
         }
         else {
-            obj[arr[i]] = arr[i]
+            objectOfUniqueKeys[arrayOfIntegers[i]] = arrayOfIntegers[i]
         }
     }
 }
 
-//Longest Consecutive 1s
+//Problem 2: Longest series of consecutive 1s in the binary representation of a number
+//Space complexity: O(n) Time Complexity: O(n)
+//Parameters: int (an integer)
 // I assumed here the input would always be an integer
-
-const longestConsecutive1s = (num) => {
-    let numInBinary = num.toString(2) //converts num to its binary represenation
-    for (let i = numInBinary.length; i > 0; i--) {
+const longestSeriesOfConsecutive1s = (int) => {
+    let binaryRepresentationOfInt = int.toString(2) //this converts int to a string of its binary represenation
+    for (let i = binaryRepresentationOfInt.length; i >= 0; i--) {
         let regex = new RegExp(`1{${i}}`)
-         if (regex.test(numInBinary)) {
+         if (regex.test(binaryRepresentationOfInt)) {
             return i;
         }
     }
 }
 
-longestConsecutive1s(0)
+//Problem 3: Sum of Nested array
+//Parameters: arrayOfNumbers (an array of numbers)
+//Space complexity: O(log n) Time Complexity: O(n)
+const sumOfNestedArray = (arrayOfNumbers) => {
+    let sumTotal = 0;
+    const loopThroughArr = (arrayOfNumbers, weighting) => {
+        for (let i = 0; i < arrayOfNumbers.length; i++) {
+            if (Array.isArray(arrayOfNumbers[i])) {
+                loopThroughArr(arrayOfNumbers[i], (weighting * 2))
+            }
+            else {
+                sumTotal += (arrayOfNumbers[i] * weighting)
+            }
+        }
+    }
+    loopThroughArr(arrayOfNumbers, 1)
+    return sumTotal
+}
 
 module.exports = {
-    findTheDuplicate,
-    longestConsecutive1s
+    findTheDuplicateNumber,
+    longestSeriesOfConsecutive1s,
+    sumOfNestedArray
 }
